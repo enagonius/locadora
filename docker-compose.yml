@@ -1,0 +1,22 @@
+# docker-compose.yml
+version: '2'
+
+services:
+  postgres:
+    image: postgres:11-bullseye
+    ports:
+     - "5432:5432"
+    # environment vars from file
+    env_file: .env
+    #/var/lib/postgresql/data
+    volumes:
+     - "dbdata:/var/lib/postgresql/data"
+  web:
+    build: .
+    volumes:
+     - ".:/opt/app"
+    ports:
+     - "8000:8000"
+
+volumes:
+  dbdata:
