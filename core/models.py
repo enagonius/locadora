@@ -7,19 +7,15 @@ class Diretor(models.Model):
     class Meta:
         verbose_name_plural = "Diretores"
 
+    def __str__(self):
+        return self.nome
+
 
 class Roteirista(models.Model):
     nome = models.CharField(max_length=255, db_index=True)
 
-
-class Filme(models.Model):
-    titulo = models.CharField(max_length=255, db_index=True)
-    data_de_lancamento = models.DateField()
-    sinopse = models.TextField()
-    qtd_copias = models.PositiveIntegerField(default=1)
-
     def __str__(self):
-        return self.titulo
+        return self.nome
 
 
 class Genero(models.Model):
@@ -28,33 +24,21 @@ class Genero(models.Model):
     class Meta:
         verbose_name = "Gênero"
 
-
-class Direcao(models.Model):
-    diretor = models.ForeignKey('core.Diretor', on_delete=models.CASCADE)
-    filme = models.ForeignKey('core.Filme', on_delete=models.CASCADE)
-
-    class Meta:
-        unique_together = ('diretor', 'filme')
-        verbose_name = 'Direção'
-        verbose_name_plural = 'Direções'
+    def __str__(self):
+        return self.estilo
 
 
-class Roteiro(models.Model):
-    roteirista = models.ForeignKey('core.Roteirista', on_delete=models.CASCADE)
-    filme = models.ForeignKey('core.Filme', on_delete=models.CASCADE)
+class Filme(models.Model):
+    titulo = models.CharField(max_length=255, db_index=True)
+    data_de_lancamento = models.DateField()
+    sinopse = models.TextField()
+    qtd_copias = models.PositiveIntegerField(default=1)
+    roteiristas = models.ManyToManyField(Roteirista)
+    diretores = models.ManyToManyField(Diretor)
+    generos = models.ManyToManyField(Genero)
 
-    class Meta:
-        unique_together = ('roteirista', 'filme')
-
-
-class Classificacao(models.Model):
-    genero = models.ForeignKey('core.Genero', on_delete=models.CASCADE)
-    filme = models.ForeignKey('core.Filme', on_delete=models.CASCADE)
-
-    class Meta:
-        unique_together = ('genero', 'filme')
-        verbose_name = 'Classificação'
-        verbose_name_plural = 'Classificações'
+    def __str__(self):
+        return self.titulo
 
 
 class Cliente(models.Model):

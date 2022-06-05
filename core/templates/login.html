@@ -8,5 +8,11 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-    HELLO WORLD
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ form.errors }}
+        {{ errors }}
+        <input type="submit" />
+    </form>
 {% endblock %}

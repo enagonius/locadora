@@ -4,9 +4,6 @@ from core.models import (
     Roteirista,
     Filme,
     Genero,
-    Direcao,
-    Roteiro,
-    Classificacao,
     Cliente,
     TelefoneCliente,
     Aluguel
@@ -17,9 +14,6 @@ model_list = (
     Roteirista,
     Filme,
     Genero,
-    Direcao,
-    Roteiro,
-    Classificacao,
     Cliente,
     TelefoneCliente,
     Aluguel
