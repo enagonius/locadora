@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Gêneros</h2>
+    <ul>
+        {% for genero in object_list %}
+        <li> <a href="{% url 'genero_detail' pk=genero.estilo %}">{{ genero.estilo }}</a> </li>
+        {% endfor %}
+    </ul>
+    | <a href="{% url 'filme_list' %}">Voltar</a> |
+    <a href="{% url 'home' %}">Página Inicial</a> |
+    <a href="{% url 'genero_create' %}">Adicionar gênero</a> |
+{% endblock %}

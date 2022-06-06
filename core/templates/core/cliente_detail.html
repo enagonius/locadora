@@ -2,3 +2,11 @@
 
 <p>Nome: {{object.nome}}</p>
 <p>Endereço: {{object.endereco}}</p>
+
+<a href="{% url 'cliente_list' %}">Voltar</a>
+
+<a href="{% url 'home' %}">Página Inicial</a>
+
+<a href="{% url 'cliente_update' pk=cliente.id %}">Atualizar cadastro</a>
+
+<a href="{% url 'cliente_delete' pk=cliente.id %}">Deletar cadastro</a>

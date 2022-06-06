@@ -5,3 +5,13 @@ body {
     background-position: center top;
     background-color: #1c2024;
 }
+
+.panel-default{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #FF6EA9 !important;
+    background-color: #00bbff00 !important;
+    border-color: #F6E3CE !important;
+}

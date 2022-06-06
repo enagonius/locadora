@@ -4,7 +4,12 @@
     <h2>Filmes</h2>
     <ul>
         {% for filme in object_list %}
-            <li>{{ filme.titulo }}</li>
+        <li> <a href="{% url 'filme_detail' pk=filme.id %}">{{ filme.titulo }}</a> </li>
         {% endfor %}
     </ul>
+    | <a href="{% url 'home' %}">Página Inicial</a> |
+    <a href="{% url 'filme_create' %}">Adicionar filme</a> |
+    <a href="{% url 'genero_list' %}">Gêneros</a> |
+    <a href="{% url 'diretor_list' %}">Diretores</a> |
+    <a href="{% url 'roteirista_list' %}">Roteiristas</a> |
 {% endblock %}

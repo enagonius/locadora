@@ -4,7 +4,9 @@
     <h2>Clientes</h2>
     <ul>
         {% for cliente in object_list %}
-            <li>{{ cliente.nome }}</li>
+        <li> <a href="{% url 'cliente_detail' pk=cliente.id %}">{{ cliente.nome }}</a> </li>
         {% endfor %}
     </ul>
+    <a href="{% url 'home' %}">Página Inicial</a>
+    <a href="{% url 'cliente_create' %}">Adicionar cliente</a>
 {% endblock %}

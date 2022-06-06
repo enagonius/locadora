@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Roteiristas</h2>
+    <ul>
+        {% for roteirista in object_list %}
+        <li> <a href="{% url 'roteirista_detail' pk=roteirista.id %}">{{ roteirista.nome }}</a> </li>
+        {% endfor %}
+    </ul>
+    | <a href="{% url 'filme_list' %}">Voltar</a> |
+    <a href="{% url 'home' %}">Página Inicial</a> |
+    <a href="{% url 'roteirista_create' %}">Adicionar roteirista</a> |
+{% endblock %}

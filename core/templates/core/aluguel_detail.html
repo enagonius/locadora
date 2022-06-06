@@ -1,0 +1,16 @@
+<h1>Detalhes do Aluguel</h1>
+
+<p>Filme: {{object.filme}}</p>
+<p>Cliente: {{object.cliente}}</p>
+<p>Funcionário: {{object.funcionario}}</p>
+<p>Data de Aluguel: {{object.datetime_aluguel}}</p>
+<p>Prazo de Devolução: {{object.prazo_devolucao}}</p>
+<p>Data de Devolução: {{object.datetime_devolucao}}</p>
+
+| <a href="{% url 'aluguel_list' %}">Voltar</a> |
+
+<a href="{% url 'home' %}">Página Inicial</a> |
+
+<a href="{% url 'aluguel_update' pk=aluguel.id %}">Atualizar aluguel</a> |
+
+<a href="{% url 'aluguel_delete' pk=aluguel.id %}">Deletar aluguel</a> |

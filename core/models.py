@@ -40,10 +40,21 @@ class Filme(models.Model):
     def __str__(self):
         return self.titulo
 
+    def get_diretores(self):
+        return ', '.join([a.nome for a in self.diretores.all()])
+
+    def get_roteiristas(self):
+        return ', '.join([a.nome for a in self.roteiristas.all()])
+
+    def get_generos(self):
+        return ', '.join([a.estilo for a in self.generos.all()])
 
 class Cliente(models.Model):
     nome = models.CharField(max_length=255, db_index=True)
     endereco = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.nome
 
 
 class TelefoneCliente(models.Model):
@@ -52,12 +63,13 @@ class TelefoneCliente(models.Model):
 
 
 class Aluguel(models.Model):
+    filme = models.ForeignKey('core.Filme', on_delete=models.DO_NOTHING)
+    cliente = models.ForeignKey('core.Cliente', on_delete=models.DO_NOTHING)
+    funcionario = models.ForeignKey('auth.User', on_delete=models.DO_NOTHING)
     datetime_aluguel = models.DateTimeField(auto_now_add=True)
     prazo_devolucao = models.DateTimeField()
     datetime_devolucao = models.DateTimeField()
-    funcionario = models.ForeignKey('auth.User', on_delete=models.DO_NOTHING)
-    cliente = models.ForeignKey('core.Cliente', on_delete=models.DO_NOTHING)
-    filme = models.ForeignKey('core.Filme', on_delete=models.DO_NOTHING)
+
 
     class Meta:
         verbose_name_plural = 'Aluguéis'

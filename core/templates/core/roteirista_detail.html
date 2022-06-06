@@ -1,0 +1,11 @@
+<h1>Dados de Roteirista</h1>
+
+<p>Nome: {{object.nome}}</p>
+
+| <a href="{% url 'roteirista_list' %}">Voltar</a> |
+
+<a href="{% url 'home' %}">Página Inicial</a> |
+
+<a href="{% url 'roteirista_update' pk=roteirista.id %}">Atualizar roteirista</a> |
+
+<a href="{% url 'roteirista_delete' pk=roteirista.id %}">Deletar roteirista</a> |

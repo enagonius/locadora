@@ -1,4 +1,16 @@
 <h1>Detalhes do Filme</h1>
 
 <p>Título: {{object.titulo}}</p>
+<p>Data de Lançamento: {{object.data_de_lancamento}}</p>
+<p>Gênero: {{object.get_generos}}</p>
 <p>Sinopse: {{object.sinopse}}</p>
+<p>Direção: {{object.get_diretores}}</p>
+<p>Roteiro: {{object.get_roteiristas}}</p>
+
+| <a href="{% url 'filme_list' %}">Voltar</a> |
+
+<a href="{% url 'home' %}">Página Inicial</a> |
+
+<a href="{% url 'filme_update' pk=filme.id %}">Atualizar filme</a> |
+
+<a href="{% url 'filme_delete' pk=filme.id %}">Deletar filme</a> |

@@ -1,0 +1,11 @@
+<h1>Dados do Diretor</h1>
+
+<p>Nome: {{object.nome}}</p>
+
+| <a href="{% url 'diretor_list' %}">Voltar</a> |
+
+<a href="{% url 'home' %}">Página Inicial</a> |
+
+<a href="{% url 'diretor_update' pk=diretor.id %}">Atualizar diretor</a> |
+
+<a href="{% url 'diretor_delete' pk=diretor.id %}">Deletar diretor</a> |

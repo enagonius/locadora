@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Aluguéis</h2>
+    <ul>
+        {% for aluguel in object_list %}
+        <li> <a href="{% url 'aluguel_detail' pk=aluguel.id %}">{{ aluguel.datetime_aluguel }}</a> </li>
+        {% endfor %}
+    </ul>
+    | <a href="{% url 'home' %}">Página Inicial</a> |
+    <a href="{% url 'aluguel_create' %}">Alugar</a> |
+{% endblock %}
