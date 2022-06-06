@@ -41,10 +41,32 @@ class CatalogoList(ListView):
     model = models.Filme
 
 class CatalogoDetail(DetailView): 
-	model = models.Filme
+    model = models.Filme
+
+class CatalogoCreate(CreateView): 
+    model = models.Filme
+    fields = '__all__'
+
+class CatalogoUpdate(UpdateView): 
+    model = models.Filme
+    fields = '__all__'
+
+class CatalogoDelete(DeleteView): 
+    model = models.Filme
 
 class CadastroList(ListView):
     model = models.Cliente
 
 class CadastroDetail(DetailView): 
-	model = models.Cliente
+    model = models.Cliente
+
+class CadastroCreate(CreateView): 
+    model = models.Cliente
+    fields = '__all__'
+
+class CadastroUpdate(UpdateView): 
+    model = models.Cliente
+    fields = '__all__'
+
+class CadastroDelete(DeleteView): 
+    model = models.Cliente

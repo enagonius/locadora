@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if object %}
+        Alterar {{model}}
+    {% else %}
+        Criar {{model}}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% if object %}
+        <h1>Alterar {{model}}</h1>
+    {% else %}
+        <h1>Criar {{model}}</h1>
+    {% endif %}
+    <form  method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input  type="submit"  value="Submit"  />
+    </form>
+{% endblock %}

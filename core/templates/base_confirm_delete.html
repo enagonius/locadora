@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Deletar {{model}}?{% endblock %}
+
+{% block content %}
+    <h1>Deletar {{model}}?</h1>
+    <form  method="post">
+        {% csrf_token %}
+        Você tem certeza que quer deletar este {{model}}?
+        <input  type="submit"  value="Submit"  />
+    </form>
+{% endblock %}
