@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block head %}<link rel="stylesheet" type="text/css" href="{% static 'core/css/form.css' %}">{% endblock %}
 
 {% block title %}
     {% if object %}
@@ -9,6 +13,7 @@
 {% endblock %}
 
 {% block content %}
+<div class="my-4 p-4 container bg-white">
     {% if object %}
         <h1>Alterar {{model}}</h1>
     {% else %}
@@ -16,7 +21,8 @@
     {% endif %}
     <form  method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input  type="submit"  value="Submit"  />
+        {% bootstrap_form form %}
+        {% bootstrap_button button_type="submit" content="Submeter" %}
     </form>
+</div>
 {% endblock %}

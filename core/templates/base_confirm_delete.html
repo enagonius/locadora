@@ -1,12 +1,17 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block head %}<link rel="stylesheet" type="text/css" href="{% static 'core/css/confirm_delete.css' %}">{% endblock %}
 
 {% block title %}Deletar {{model}}?{% endblock %}
 
 {% block content %}
-    <h1>Deletar {{model}}?</h1>
-    <form  method="post">
-        {% csrf_token %}
-        Você tem certeza que quer deletar este {{model}}?
-        <input  type="submit"  value="Confirm"  />
-    </form>
+    <div class="container bg-white my-4 p-4">
+        <h1>Deletar {{model}}?</h1>
+        <form  method="post">
+            {% csrf_token %}
+            <p>Você tem certeza que quer deletar este {{model}}?</p>
+            <button class="btn btn-danger my-2" type="submit">Confirmar</button>
+        </form>
+    </div>
 {% endblock %}

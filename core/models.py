@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Diretor(models.Model):
@@ -23,6 +24,7 @@ class Genero(models.Model):
 
     class Meta:
         verbose_name = "Gênero"
+        verbose_name_plural = "Gêneros"
 
     def __str__(self):
         return self.estilo
@@ -43,8 +45,14 @@ class Filme(models.Model):
     def get_diretores(self):
         return ', '.join([a.nome for a in self.diretores.all()])
 
+    def get_diretores_instances(self):
+        return [a for a in self.diretores.all()]
+
     def get_roteiristas(self):
         return ', '.join([a.nome for a in self.roteiristas.all()])
+    
+    def get_roteiristas_instances(self):
+        return [a for a in self.roteiristas.all()]
 
     def get_generos(self):
         return ', '.join([a.estilo for a in self.generos.all()])
@@ -68,8 +76,11 @@ class Aluguel(models.Model):
     funcionario = models.ForeignKey('auth.User', on_delete=models.DO_NOTHING)
     datetime_aluguel = models.DateTimeField(auto_now_add=True)
     prazo_devolucao = models.DateTimeField()
-    datetime_devolucao = models.DateTimeField()
-
 
     class Meta:
         verbose_name_plural = 'Aluguéis'
+
+
+class Funcionario(User):
+    class Meta:
+        proxy = True

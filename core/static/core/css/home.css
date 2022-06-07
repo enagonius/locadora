@@ -1,0 +1,17 @@
+body {
+    background-image: url("../images/bg_home.jpg");
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-color: #1c2024;
+}
+
+.outer {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width:500px;
+    height:500px;
+    margin-left:-250px;
+    margin-top:-250px;
+}

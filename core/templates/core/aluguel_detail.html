@@ -1,3 +1,6 @@
+{% extends "base_detail.html" %}
+
+{% block content %}
 <h1>Detalhes do Aluguel</h1>
 
 <p>Filme: {{object.filme}}</p>
@@ -14,3 +17,4 @@
 <a href="{% url 'aluguel_update' pk=aluguel.id %}">Atualizar aluguel</a> |
 
 <a href="{% url 'aluguel_delete' pk=aluguel.id %}">Deletar aluguel</a> |
+{% endblock %}

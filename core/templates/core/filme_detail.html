@@ -1,16 +1,48 @@
-<h1>Detalhes do Filme</h1>
+{% extends "base_detail.html" %}
 
-<p>Título: {{object.titulo}}</p>
-<p>Data de Lançamento: {{object.data_de_lancamento}}</p>
-<p>Gênero: {{object.get_generos}}</p>
-<p>Sinopse: {{object.sinopse}}</p>
-<p>Direção: {{object.get_diretores}}</p>
-<p>Roteiro: {{object.get_roteiristas}}</p>
+{% block subcontent %}
+    <h2>{{object.titulo}}</h2>
 
-| <a href="{% url 'filme_list' %}">Voltar</a> |
+    <table>
+        <thead>
+            <th>Data de Lançamento: </th>
+            <th>Gênero: </th>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>{{object.data_de_lancamento}} &nbsp &nbsp &nbsp &nbsp</td>
+                    <td>{{object.get_generos}}</td>
+                </tr>
+        </tbody>
+    </table>
 
-<a href="{% url 'home' %}">Página Inicial</a> |
+    <table>
+        <thead>
+            <th>Sinopse:</th>
+        </thead>
+        <tbody>
+            <td>{{object.sinopse}}</td>
+        </tbody>
+    </table>
 
-<a href="{% url 'filme_update' pk=filme.id %}">Atualizar filme</a> |
-
-<a href="{% url 'filme_delete' pk=filme.id %}">Deletar filme</a> |
+    <table>
+        <thead>
+            <th>Direção: </th>
+            <th>Roteiro: </th>
+            <th>Cópias Disponíveis</th>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>{{object.get_diretores}} &nbsp &nbsp &nbsp &nbsp</td>
+                    <td>{{object.get_roteiristas}} &nbsp &nbsp &nbsp &nbsp</td>
+                    <td>{{object.qtd_copias}}</td>
+                </tr>
+        </tbody>
+    </table>
+    <ul>
+    </ul>
+    | <a href="{% url 'filme_list' %}">Voltar</a> |
+    <a href="{% url 'home' %}">Página Inicial</a> |
+    <a href="{% url 'filme_update' pk=filme.id %}">Atualizar filme</a> |
+    <a href="{% url 'filme_delete' pk=filme.id %}">Deletar filme</a> |
+{% endblock %}

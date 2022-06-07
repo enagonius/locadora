@@ -1,12 +1,23 @@
-{% extends "base.html" %}
+{% extends "base_list.html" %}
 
-{% block content %}
-    <h2>Clientes</h2>
+{% block subcontent %}
+    <h2>Nome</h2>
+    <table>
+        <thead>
+            <th>Nome</th>
+            <th>Endereço</th>
+        </thead>
+        <tbody>
+            {% for object in object_list %}
+                <tr>
+                    <td><a href="{% url 'cliente_detail' pk=object.id %}">{{ object.nome }}</a></td>
+                    <td>{{ object.endereco }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     <ul>
-        {% for cliente in object_list %}
-        <li> <a href="{% url 'cliente_detail' pk=cliente.id %}">{{ cliente.nome }}</a> </li>
-        {% endfor %}
     </ul>
-    <a href="{% url 'home' %}">Página Inicial</a>
-    <a href="{% url 'cliente_create' %}">Adicionar cliente</a>
+    | <a href="{% url 'home' %}">Página Inicial</a> |
+    <a href="{% url 'cliente_create' %}">Adicionar cliente</a> |
 {% endblock %}

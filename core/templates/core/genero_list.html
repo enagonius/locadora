@@ -1,11 +1,20 @@
-{% extends "base.html" %}
+{% extends "base_list.html" %}
 
-{% block content %}
+{% block subcontent %}
     <h2>Gêneros</h2>
+    <table>
+        <thead>
+            <th>Estilos</th>
+        </thead>
+        <tbody>
+            {% for object in object_list %}
+                <tr>
+                    <td><a href="{% url 'genero_detail' pk=object.estilo %}">{{ object.estilo }}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     <ul>
-        {% for genero in object_list %}
-        <li> <a href="{% url 'genero_detail' pk=genero.estilo %}">{{ genero.estilo }}</a> </li>
-        {% endfor %}
     </ul>
     | <a href="{% url 'filme_list' %}">Voltar</a> |
     <a href="{% url 'home' %}">Página Inicial</a> |

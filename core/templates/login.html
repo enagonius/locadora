@@ -9,11 +9,22 @@
 
 {% block content %}
 <div class="panel panel-default">
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        {{ form.errors }}
-        {{ errors }}
-        <input type="submit" />
+    <form method="post" class="loginForm">
+        <div class="container">
+            {% csrf_token %}
+            <b>{{ form.non_field_errors }}</b>
+            <div class="form-group">
+                {{ form.username.errors }}
+                <label for="{{ form.username.id_for_label }}" class="fw-bold">Usuário:</label>
+                <input id="username" type="text" name="username" value="" class="form-control">
+            </div>
+            <div class="form-group">
+                {{ form.password.errors }}
+                <label for="{{ form.password.id_for_label }}" class="fw-bold">Senha:</label>
+                <input id="password" type="password" name="password" value="" class="form-control">
+            </div>
+            <button class="btn btn-primary col-12 my-2" type="submit">Enviar</button>
+        </div>
     </form>
+</div>
 {% endblock %}

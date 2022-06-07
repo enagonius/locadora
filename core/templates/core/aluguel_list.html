@@ -1,12 +1,32 @@
-{% extends "base.html" %}
+{% extends "base_list.html" %}
 
-{% block content %}
-    <h2>Aluguéis</h2>
+{% block subcontent %}
+    <h2>Nome</h2>
+    <table>
+        <thead>
+            <th>id</th>
+            <th>Data de Aluguel</th>
+            <th>Prazo de Devolução</th>
+            <th>Filme</th>
+            <th>Cliente</th>
+            <th>Funcionário</th>
+        </thead>
+        <tbody>
+            {% for object in object_list %}
+                <tr>
+                    <td><a href="{% url 'aluguel_detail' pk=object.id %}">{{ object.id }}</a></td>
+                    <td>{{ object.datetime_aluguel }}</td>
+                    <td>{{ object.prazo_devolucao }}</td>
+                    <td>{{ object.filme.titulo }}</td>
+                    <td>{{ object.cliente.nome }}</td>
+                    <td>{{ object.funcionario.first_name }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     <ul>
-        {% for aluguel in object_list %}
-        <li> <a href="{% url 'aluguel_detail' pk=aluguel.id %}">{{ aluguel.datetime_aluguel }}</a> </li>
-        {% endfor %}
     </ul>
     | <a href="{% url 'home' %}">Página Inicial</a> |
     <a href="{% url 'aluguel_create' %}">Alugar</a> |
+    <a href="{% url 'export_alugueis' %}" target="_blank">Exportar PDF</a> |
 {% endblock %}

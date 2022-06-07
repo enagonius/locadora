@@ -1,0 +1,12 @@
+{% extends "base_list.html" %}
+
+{% block content %}
+    <h2>Funcionario</h2>
+    <ul>
+        {% for funcionario in object_list %}
+        <li> {{id}} | <a href="{% url 'funcionario_detail' pk=funcionario.id %}">{{ funcionario.first_name }} {{funcionario.last_name}}</a> </li>
+        {% endfor %}
+    </ul>
+    | <a href="{% url 'home' %}">Página Inicial</a> |
+    <a href="{% url 'funcionario_create' %}">Alugar</a> |
+{% endblock %}

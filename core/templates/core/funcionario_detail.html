@@ -1,0 +1,19 @@
+{% extends "base_detail.html" %}
+
+{% block content %}
+<h1>Detalhes do funcionario</h1>
+
+<p>{{object.id}}</p>
+<p>{{object.username}}</p>
+<p>{{object.email}}</p>
+<p>{{object.first_name}} {{object.last_name}}</p>
+<p>{% if object.is_active %}ativo{% else %}inativo{% endif %}</p>
+
+<a href="{% url 'funcionario_list' %}">Voltar</a> |
+
+<a href="{% url 'home' %}" target="_blank">Página Inicial</a> |
+
+<a href="{% url 'funcionario_update' pk=object.id %}" target="_blank">Atualizar funcionario</a> |
+
+<a href="{% url 'funcionario_delete' pk=object.id %}" target="_blank">Deletar funcionario</a> |
+{% endblock %}

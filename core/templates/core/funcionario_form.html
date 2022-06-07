@@ -1,0 +1,13 @@
+{% extends "base_form.html" %}
+
+{% block title %}
+    {% with model='funcionario' %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
+{% block content %}
+    {% with model='funcionario' %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}

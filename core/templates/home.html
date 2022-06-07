@@ -1,10 +1,19 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/css/home.css' %}">
+{% endblock %}
 
 {% block title %}Home{% endblock %}
 {% block content %}
-Olá, {{ request.user.first_name }} {{ request.user.last_name }}!
-| <a href="{% url 'logout' %}">Logout</a> |
-<a href="{% url 'filme_list' %}">Catálogo</a> |
-<a href="{% url 'cliente_list' %}">Clientes</a> |
-<a href="{% url 'aluguel_list' %}">Aluguéis</a> |
+<div class="outer">
+    <div class="d-flex flex-column align-middle h-100 justify-content-center">
+        <a class="btn btn-danger col-6 mx-auto" href="{% url 'logout' %}">Logout</a>
+        <a class="btn btn-warning col-6 mx-auto mt-2" href="{% url 'filme_list' %}">Catálogo</a>
+        <a class="btn btn-warning col-6 mx-auto mt-2" href="{% url 'cliente_list' %}">Clientes</a>
+        <a class="btn btn-warning col-6 mx-auto mt-2" href="{% url 'aluguel_list' %}">Aluguéis</a>
+        <a class="btn btn-warning col-6 mx-auto mt-2" href="{% url 'funcionario_list' %}">Funcionários</a>
+    </div>
+</div>
 {% endblock %}

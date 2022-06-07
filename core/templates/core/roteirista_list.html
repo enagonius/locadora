@@ -1,11 +1,20 @@
-{% extends "base.html" %}
+{% extends "base_list.html" %}
 
-{% block content %}
-    <h2>Roteiristas</h2>
+{% block subcontent %}
+    <h2>Filmes</h2>
+    <table>
+        <thead>
+            <th>Nome</th>
+        </thead>
+        <tbody>
+            {% for object in object_list %}
+                <tr>
+                    <td><a href="{% url 'roteirista_detail' pk=object.id %}">{{ object.nome }}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     <ul>
-        {% for roteirista in object_list %}
-        <li> <a href="{% url 'roteirista_detail' pk=roteirista.id %}">{{ roteirista.nome }}</a> </li>
-        {% endfor %}
     </ul>
     | <a href="{% url 'filme_list' %}">Voltar</a> |
     <a href="{% url 'home' %}">Página Inicial</a> |

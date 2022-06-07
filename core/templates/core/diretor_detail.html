@@ -1,11 +1,22 @@
-<h1>Dados do Diretor</h1>
+{% extends "base_detail.html" %}
 
-<p>Nome: {{object.nome}}</p>
-
-| <a href="{% url 'diretor_list' %}">Voltar</a> |
-
-<a href="{% url 'home' %}">Página Inicial</a> |
-
-<a href="{% url 'diretor_update' pk=diretor.id %}">Atualizar diretor</a> |
-
-<a href="{% url 'diretor_delete' pk=diretor.id %}">Deletar diretor</a> |
+{% block subcontent %}
+    <h2>Filmes dirigidos por {{object.nome}}</h2>
+    <table>
+        <thead>
+            <th></th>
+        </thead>
+        <tbody>
+            {% for filme in object.filme_set.all %}{{filme}}{% endfor %}
+                <tr>
+                    <td></td>
+                </tr>
+        </tbody>
+    </table>
+    <ul>
+    </ul>
+    | <a href="{% url 'diretor_list' %}">Voltar</a> |
+    <a href="{% url 'home' %}">Página Inicial</a> |
+    <a href="{% url 'diretor_update' pk=diretor.id %}">Atualizar diretor</a> |
+    <a href="{% url 'diretor_delete' pk=diretor.id %}">Deletar diretor</a> |
+{% endblock %}

@@ -1,15 +1,38 @@
-{% extends "base.html" %}
+{% extends "base_list.html" %}
 
-{% block content %}
+{% block subcontent %}
     <h2>Filmes</h2>
+    <table>
+        <thead>
+            <th>Título</th>
+            <th>Data de Lançamento</th>
+            <th>Direção</th>
+            <th>Roteiro</th>
+        </thead>
+        <tbody>
+            {% for object in object_list %}
+                <tr>
+                    <td><a href="{% url 'filme_detail' pk=object.id %}">{{ object.titulo }}</a> &nbsp &nbsp &nbsp &nbsp</td>
+                    <td>{{ object.data_de_lancamento }} &nbsp &nbsp &nbsp &nbsp</td>
+                    <td>{% for diretor in object.get_diretores_instances %}
+                            <a href="{% url 'diretor_detail' pk=diretor.id %}">
+                                {{ diretor.nome }}{% if forloop.last %}{% else %},{% endif %}
+                            </a>
+                        {% endfor %} &nbsp &nbsp &nbsp &nbsp</td>
+                        <td>{% for roteirista in object.get_roteiristas_instances %}
+                            <a href="{% url 'roteirista_detail' pk=roteirista.id %}">
+                                {{ roteirista.nome }}{% if forloop.last %}{% else %},{% endif %}
+                            </a>
+                        {% endfor %} &nbsp &nbsp &nbsp &nbsp</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     <ul>
-        {% for filme in object_list %}
-        <li> <a href="{% url 'filme_detail' pk=filme.id %}">{{ filme.titulo }}</a> </li>
-        {% endfor %}
     </ul>
-    | <a href="{% url 'home' %}">Página Inicial</a> |
-    <a href="{% url 'filme_create' %}">Adicionar filme</a> |
-    <a href="{% url 'genero_list' %}">Gêneros</a> |
-    <a href="{% url 'diretor_list' %}">Diretores</a> |
-    <a href="{% url 'roteirista_list' %}">Roteiristas</a> |
+    | <a href="{% url 'home' %}">Página Inicial</a> | &nbsp &nbsp &nbsp &nbsp
+    | <a href="{% url 'filme_create' %}">Adicionar filme</a> | &nbsp &nbsp &nbsp &nbsp
+    | <a href="{% url 'genero_list' %}">Gêneros</a> | &nbsp &nbsp &nbsp &nbsp
+    | <a href="{% url 'diretor_list' %}">Diretores</a> | &nbsp &nbsp &nbsp &nbsp
+    | <a href="{% url 'roteirista_list' %}">Roteiristas</a> |
 {% endblock %}
