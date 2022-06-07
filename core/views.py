@@ -213,7 +213,7 @@ class FuncionarioCreate(LoginRequiredMixin, CreateView):
 
 class FuncionarioUpdate(LoginRequiredMixin, UpdateView): 
     model = models.Funcionario
-    fields = ('models.Funcionarioname', 'email', 'first_name', 'last_name', 'is_active')
+    fields = ('username', 'email', 'first_name', 'last_name', 'is_active')
     template_name = 'core/funcionario_form.html'
 
     def form_valid(self, form):
@@ -223,7 +223,7 @@ class FuncionarioUpdate(LoginRequiredMixin, UpdateView):
 class FuncionarioDelete(LoginRequiredMixin, DeleteView): 
     model = models.Funcionario
     success_url = reverse_lazy('funcionario_list')
-    template_name = 'core/funcionario_delete.html'
+    template_name = 'core/funcionario_confirm_delete.html'
 
 
 # @login_required

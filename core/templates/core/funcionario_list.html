@@ -1,12 +1,18 @@
 {% extends "base_list.html" %}
 
-{% block content %}
-    <h2>Funcionario</h2>
+{% block subcontent %}
+    <h2>Funcionários</h2>
+    <table>
+        <thead>
+            <th>{% for object in object_list %}
+                <li> {{id}} | <a href="{% url 'funcionario_detail' pk=object.id %}">{{ object.first_name }} {{funcionario.last_name}}</a> </li>
+                {% endfor %}</th>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
     <ul>
-        {% for funcionario in object_list %}
-        <li> {{id}} | <a href="{% url 'funcionario_detail' pk=funcionario.id %}">{{ funcionario.first_name }} {{funcionario.last_name}}</a> </li>
-        {% endfor %}
     </ul>
-    | <a href="{% url 'home' %}">Página Inicial</a> |
-    <a href="{% url 'funcionario_create' %}">Alugar</a> |
+    | <a href="{% url 'home' %}">Página Inicial</a> | &nbsp &nbsp &nbsp &nbsp
+    | <a href="{% url 'funcionario_create' %}">Contratar</a> |
 {% endblock %}

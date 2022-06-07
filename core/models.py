@@ -11,6 +11,9 @@ class Diretor(models.Model):
     def __str__(self):
         return self.nome
 
+    def get_filme_instances(self):
+        return [a for a in self.filme_set.all()]
+
 
 class Roteirista(models.Model):
     nome = models.CharField(max_length=255, db_index=True)
@@ -18,6 +21,8 @@ class Roteirista(models.Model):
     def __str__(self):
         return self.nome
 
+    def get_filme_instances(self):
+        return [a for a in self.filme_set.all()]
 
 class Genero(models.Model):
     estilo = models.CharField(max_length=255, primary_key=True, db_index=True)
@@ -38,6 +43,9 @@ class Filme(models.Model):
     roteiristas = models.ManyToManyField(Roteirista)
     diretores = models.ManyToManyField(Diretor)
     generos = models.ManyToManyField(Genero)
+
+    class Meta:
+        ordering = ('titulo',)
 
     def __str__(self):
         return self.titulo

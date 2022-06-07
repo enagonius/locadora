@@ -1,16 +1,23 @@
 {% extends "base_detail.html" %}
 
-{% block content %}
-<h1>Dados de Usuário</h1>
-
-<p>Nome: {{object.nome}}</p>
-<p>Endereço: {{object.endereco}}</p>
-
-<a href="{% url 'cliente_list' %}">Voltar</a>
-
-<a href="{% url 'home' %}">Página Inicial</a>
-
-<a href="{% url 'cliente_update' pk=cliente.id %}">Atualizar cadastro</a>
-
-<a href="{% url 'cliente_delete' pk=cliente.id %}">Deletar cadastro</a>
+{% block subcontent %}
+    <h2>Dados do Cliente</h2>
+    <table>
+        <thead>
+            <th>Nome: </th>
+            <th>Endereço: </th>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>Nome: {{object.nome}} &nbsp &nbsp &nbsp &nbsp</td>
+                    <td>Endereço: {{object.endereco}}</td>
+                </tr>
+        </tbody>
+    </table>
+    <ul>
+    </ul>
+    | <a href="{% url 'cliente_list' %}">Voltar</a> | &nbsp &nbsp &nbsp &nbsp
+    | <a href="{% url 'home' %}">Página Inicial</a> | &nbsp &nbsp &nbsp &nbsp
+    | <a href="{% url 'cliente_update' pk=cliente.id %}">Atualizar cadastro</a> | &nbsp &nbsp &nbsp &nbsp
+    | <a href="{% url 'cliente_delete' pk=cliente.id %}">Deletar cadastro</a> |
 {% endblock %}

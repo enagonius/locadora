@@ -7,16 +7,19 @@
             <th></th>
         </thead>
         <tbody>
-            {% for filme in object.filme_set.all %}{{filme}}{% endfor %}
                 <tr>
-                    <td></td>
+                    <td>{% for filme in object.get_filme_instances %}
+                        <a href="{% url 'filme_detail' pk=filme.id %}">
+                            {{ filme.titulo }}{% if forloop.last %}{% else %},{% endif %}
+                        </a>
+                    {% endfor %} &nbsp &nbsp &nbsp &nbsp</td>
                 </tr>
         </tbody>
     </table>
     <ul>
     </ul>
-    | <a href="{% url 'diretor_list' %}">Voltar</a> |
-    <a href="{% url 'home' %}">Página Inicial</a> |
-    <a href="{% url 'diretor_update' pk=diretor.id %}">Atualizar diretor</a> |
-    <a href="{% url 'diretor_delete' pk=diretor.id %}">Deletar diretor</a> |
+    | <a href="{% url 'diretor_list' %}">Voltar</a> | &nbsp &nbsp &nbsp &nbsp
+    | <a href="{% url 'home' %}">Página Inicial</a> | &nbsp &nbsp &nbsp &nbsp
+    | <a href="{% url 'diretor_update' pk=diretor.id %}">Atualizar diretor</a> | &nbsp &nbsp &nbsp &nbsp
+    | <a href="{% url 'diretor_delete' pk=diretor.id %}">Deletar diretor</a> |
 {% endblock %}

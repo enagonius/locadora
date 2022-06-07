@@ -33,16 +33,24 @@
         </thead>
         <tbody>
                 <tr>
-                    <td>{{object.get_diretores}} &nbsp &nbsp &nbsp &nbsp</td>
-                    <td>{{object.get_roteiristas}} &nbsp &nbsp &nbsp &nbsp</td>
+                    <td>{% for diretor in object.get_diretores_instances %}
+                        <a href="{% url 'diretor_detail' pk=diretor.id %}">
+                            {{ diretor.nome }}{% if forloop.last %}{% else %},{% endif %}
+                        </a>
+                    {% endfor %} &nbsp &nbsp &nbsp &nbsp</td>
+                    <td>{% for roteirista in object.get_roteiristas_instances %}
+                        <a href="{% url 'roteirista_detail' pk=roteirista.id %}">
+                            {{ roteirista.nome }}{% if forloop.last %}{% else %},{% endif %}
+                        </a>
+                    {% endfor %} &nbsp &nbsp &nbsp &nbsp</td>
                     <td>{{object.qtd_copias}}</td>
                 </tr>
         </tbody>
     </table>
     <ul>
     </ul>
-    | <a href="{% url 'filme_list' %}">Voltar</a> |
-    <a href="{% url 'home' %}">Página Inicial</a> |
-    <a href="{% url 'filme_update' pk=filme.id %}">Atualizar filme</a> |
-    <a href="{% url 'filme_delete' pk=filme.id %}">Deletar filme</a> |
+    | <a href="{% url 'filme_list' %}">Voltar</a> | &nbsp &nbsp &nbsp &nbsp
+    | <a href="{% url 'home' %}">Página Inicial</a> | &nbsp &nbsp &nbsp &nbsp
+    | <a href="{% url 'filme_update' pk=filme.id %}">Atualizar filme</a> | &nbsp &nbsp &nbsp &nbsp
+    | <a href="{% url 'filme_delete' pk=filme.id %}">Deletar filme</a> |
 {% endblock %}

@@ -1,15 +1,24 @@
 {% extends "base_detail.html" %}
 
-{% block content %}
-<h1>Dados do Gênero</h1>
-
-<p>Nome: {{object.estilo}}</p>
-
-| <a href="{% url 'genero_list' %}">Voltar</a> |
-
-<a href="{% url 'home' %}">Página Inicial</a> |
-
-<a href="{% url 'genero_update' pk=genero.estilo %}">Atualizar gênero</a> |
-
-<a href="{% url 'genero_delete' pk=genero.estilo %}">Deletar gênero</a> |
+{% block subcontent %}
+    <h2>Filmes de {{object.estilo}}</h2>
+    <table>
+        <thead>
+            <th></th>
+        </thead>
+        <tbody>
+            {% for filme in object.filme_set.all %}
+                <p>{{filme}}</p>
+            {% endfor %}
+                <tr>
+                    <td></td>
+                </tr>
+        </tbody>
+    </table>
+    <ul>
+    </ul>
+    | <a href="{% url 'genero_list' %}">Voltar</a> | &nbsp &nbsp &nbsp &nbsp
+    | <a href="{% url 'home' %}">Página Inicial</a> | &nbsp &nbsp &nbsp &nbsp
+    | <a href="{% url 'genero_update' pk=genero.estilo %}">Atualizar gênero</a> | &nbsp &nbsp &nbsp &nbsp
+    | <a href="{% url 'genero_delete' pk=genero.estilo %}">Deletar gênero</a> |
 {% endblock %}

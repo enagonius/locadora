@@ -7,9 +7,12 @@
             <th></th>
         </thead>
         <tbody>
-            {% for filme in object.filme_set.all %}{{filme}}{% endfor %}
                 <tr>
-                    <td></td>
+                    <td>{% for filme in object.get_filme_instances %}
+                        <a href="{% url 'filme_detail' pk=filme.id %}">
+                            {{ filme.titulo }}{% if forloop.last %}{% else %},{% endif %}
+                        </a>
+                    {% endfor %} &nbsp &nbsp &nbsp &nbsp</td>
                 </tr>
         </tbody>
     </table>
